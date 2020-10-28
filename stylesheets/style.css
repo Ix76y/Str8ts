@@ -1,0 +1,64 @@
+body {
+    background-color: #ececec;
+    text-align: center; 
+    font-family: var(--sl-font-sans);
+}
+
+.center {
+    margin: auto;
+    /*border: 3px solid var(--sl-color-primary-50);*/
+    padding: 10px;
+    display: grid;
+    justify-content: center;
+  }
+
+.grid-container {
+    margin: auto;
+    display: grid;
+    grid-column-gap: 2px;
+    grid-template-columns: 32px 32px 32px 32px 32px 32px 32px 32px 32px;
+    height: 291px;
+    align-content: center;
+    margin: 16px;
+}
+
+.grid-item {
+    text-align: center;
+    background-color: rgba(255, 255, 255);
+    color: #000;
+    width: 32px;
+    height: 32px;
+    border: 0.5px solid rgb(187, 187, 187);
+}
+
+.grid-item .black {
+    background-color: #2d2d2d;
+    color: #FFF;
+}
+
+.puzzle-buttons {
+    margin: auto;
+}
+
+.num-input {
+    margin: 2px;
+    padding-top: 10px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 24px;
+    text-align: center;
+}
+
+.num-input:hover {
+    /*color:#fff!important;*/
+    background-color:var(--sl-color-primary-90)!important;
+}
+
+.num-input:active, .num-input:focus {
+    border: none;
+    outline: none;
+    background-color:var(--sl-color-primary-90)!important;
+    border-bottom: 1px solid #ccc;
+}
+

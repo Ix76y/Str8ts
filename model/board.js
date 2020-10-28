@@ -13,8 +13,8 @@ class Board {
 }
 
 
-/*Board.prototype.toString = function boardToString() {
+Board.prototype.toString = function boardToString() {
     return `Board of Size ${this.size}`;
-};*/
+};
 
 module.exports = Board

@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <script src="game.js"></script>
-    <!--<script>require('./game.js')</script>-->
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.22/dist/shoelace/shoelace.css">   
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.22/dist/shoelace/shoelace.esm.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <div class="center">
+        <h1>Str8ts</h1>
+        <!--<div>
+        <h1>Hello World!</h1>
+            We are using node <script>document.write(process.versions.node)</script>,
+            Chrome <script>document.write(process.versions.chrome)</script>,
+            and Electron <script>document.write(process.versions.electron)</script>.
+        </div>-->
+        <div class="grid-container" id="game-board">
+        </div> 
+        <sl-button-group class="puzzle-buttons">
+            <sl-button><sl-icon slot="prefix" name="arrow-counterclockwise"></sl-icon>Generate</sl-button>
+            <sl-button><sl-icon slot="prefix" name="clipboard-check"></sl-icon>Check</sl-button>
+            <sl-button><sl-icon slot="prefix" name="gear"></sl-icon>Solve</sl-button>
+          </sl-button-group>
+    </div>
+    <script src="game.js"></script>
 </body>
 </html>
