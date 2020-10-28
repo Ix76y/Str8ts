@@ -1,0 +1,25 @@
+{
+  "name": "str8ts",
+  "version": "1.0.0",
+  "description": "Application to create and solve Str8ts puzzle.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ix76y/Str8ts.git"
+  },
+  "keywords": [
+    "Str8ts",
+    "Puzzle",
+    "Electron"
+  ],
+  "author": "Ix76y",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ix76y/Str8ts/issues"
+  },
+  "homepage": "https://github.com/Ix76y/Str8ts#readme"
+}
