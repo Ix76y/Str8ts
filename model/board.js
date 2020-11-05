@@ -20,19 +20,42 @@ class Board {
             } 
         } 
         var numBlackFields = randomIntFromInterval(min, max)
+        console.log("NumBlackFields: " + numBlackFields)
         for(var i = 0; i < numBlackFields; i++) {
-            var x = randomIntFromInterval(0, 8)
-            var y = randomIntFromInterval(0, 8)
-            while(!this.fields[x][y].isWhite || !validate(this, x, y)) { //|| validate(this, x, y)
+            var x = randomIntFromInterval(0.0, 8.0)
+            var y = randomIntFromInterval(0.0, 8.0)
+            while(!this.fields[x][y].isWhite || !validate(this, x, y)) { 
                 this.fields[x][y].isWhite = true
-                x = randomIntFromInterval(0, 8)
-                y = randomIntFromInterval(0, 8)
+                x = randomIntFromInterval(0.0, 8.0)
+                y = randomIntFromInterval(0.0, 8.0)
             }
             this.fields[x][y].isWhite = false
         }
         // check emptyStreets() and add if necessary blocks
 
         // fill with numbers
+    }
+
+    generateSimpleExample() {
+        for(var i = 0; i < this.size; i++) {
+            for (var j = 0; j < this.size; j++) {
+                this.fields[i][j].isWhite = true
+                this.fields[i][j].isSet = false
+                this.fields[i][j].number = 0
+            } 
+        } 
+        var y = [2, 6, 5, 6, 0, 3, 4, 8, 2, 8, 2, 6, 0, 6, 0, 4, 5, 8, 2, 3, 2, 6]
+        var x = [0, 0, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 6, 6, 7, 7, 8, 8]
+        var nums = [[0, 8, 4], [1, 0, 8], [1, 1, 9], [1, 4, 7], [2, 0, 4], [2, 1, 5], [2, 6, 2], [2, 8, 7], [3, 2, 8], [3, 3, 3], [4, 0, 7], [5, 2, 2], [5, 4, 4], [5, 6, 6], [5, 8, 8], [6, 4, 1], [7, 0, 1], [7, 3, 9], [7, 4, 8], [7, 5, 6], [8, 6, 3]]
+        for (var i = 0; i < x.length; i++) {
+            this.fields[x[i]][y[i]].isWhite = false
+            console.log("Setting to black " + x[i] + "/" + y[i])
+        }
+        for (var i = 0; i < nums.length; i++) {
+            this.fields[nums[i][0]][nums[i][1]].number = nums[i][2]
+            // console.log("isSet = true "+ nums[i][0] + "/" + nums[i][1] + " || " + this.fields[0][8].isSet)
+            this.fields[nums[i][0]][nums[i][1]].isSet = true
+        }
     }
 }
 
@@ -76,7 +99,7 @@ function isValidStreet(board, x, y) {
         if (isValidField(board, x - 1, y))
             hasStreetNeighbour = true
     } else {
-        return false
+        return true
     }
     return hasStreetNeighbour
 }
@@ -100,8 +123,9 @@ function validate(board, x, y) {
     return isValidStreet(board, x, y - 1) && isValidStreet(board, x, y + 1) && isValidStreet(board, x - 1, y) && isValidStreet(board, x + 1, y)
 }
 
-function randomIntFromInterval(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min);
+function randomIntFromInterval(min, max) { 
+    var r = Math.random()
+    return Math.round(r * (max - min) + min);
 }
 
 Board.prototype.toString = function boardToString() {

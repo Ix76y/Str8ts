@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
 body {
     background-color: #ececec;
     text-align: center; 
@@ -45,13 +47,16 @@ body {
 }
 
 .num-input {
-    margin: 2px;
-    padding-top: 10px;
+    margin: 4px;
+    /*padding-top: 4px;*/
     display: block;
     border: none;
-    border-bottom: 1px solid #ccc;
-    width: 24px;
+    /*border-bottom: 1px solid #ccc;*/
+    width: 20px;
     text-align: center;
+    color: var(--sl-color-primary-50);
+    font-size: larger;
+    font-family: 'Architects Daughter', cursive;
 }
 
 .num-input:hover {
@@ -66,3 +71,15 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
+.num-set {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.num-set-black {
+    color: black;
+}
+
+.num-set-white {
+    color: white;
+}
