@@ -1,6 +1,7 @@
 class Field {
     constructor() {
         this.isWhite = true;
+        this.isSet = false;
         this.number = 0;
     }
     

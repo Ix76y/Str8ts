@@ -20,9 +20,15 @@
         <div class="grid-container" id="game-board">
         </div> 
         <sl-button-group class="puzzle-buttons">
-            <sl-button><sl-icon slot="prefix" name="arrow-counterclockwise"></sl-icon>Generate</sl-button>
-            <sl-button><sl-icon slot="prefix" name="clipboard-check"></sl-icon>Check</sl-button>
-            <sl-button><sl-icon slot="prefix" name="gear"></sl-icon>Solve</sl-button>
+            <sl-tooltip content="Generate a new Str8ts Puzzle." placement="bottom">
+                <sl-button onclick="generateNew()"><sl-icon slot="prefix" name="arrow-counterclockwise"></sl-icon>Generate</sl-button>
+            </sl-tooltip>
+            <sl-tooltip content="Check your current values." placement="bottom">
+                <sl-button><sl-icon slot="prefix" name="clipboard-check"></sl-icon>Check</sl-button>
+            </sl-tooltip>
+            <sl-tooltip content="Solves the puzzle and shows you the solution." placement="bottom">
+                <sl-button><sl-icon slot="prefix" name="gear"></sl-icon>Solve</sl-button>
+            </sl-tooltip>
           </sl-button-group>
     </div>
     <script src="game.js"></script>

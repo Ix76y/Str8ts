@@ -31,9 +31,13 @@ body {
     border: 0.5px solid rgb(187, 187, 187);
 }
 
-.grid-item .black {
+.grid-item-black {
+    text-align: center;
     background-color: #2d2d2d;
     color: #FFF;
+    width: 32px;
+    height: 32px;
+    border: 0.5px solid rgb(187, 187, 187);
 }
 
 .puzzle-buttons {
