@@ -90,21 +90,12 @@ function checkStreets(game) {
             // missingBorderValues = street.length - values already set - gap values
             var missingBorderValues = street.fields.length - streetValues.size - gapValues.size
 
-            // minOfStreet = minSetValue - missingBorderValues; maxOfStreet = maxSetValue + missingBorderValues;
-            // if minOfStreet is < 1 then maxOfStreet -= (minOfStreet); minofStreet = 1
-            // if maxOfStreet is > 9 then minOfStreet -= (maxOfStreet%9); maxOfStreet = 9
             var minOfStreet = minSetValue - missingBorderValues
             var maxOfStreet = maxSetValue + missingBorderValues
-            if (minOfStreet < 1) {
-                maxOfStreet -= minOfStreet
-                minOfStreet = 1
-            } else if (isNaN(minOfStreet)) {
+            if (minOfStreet < 1 || isNaN(minOfStreet)) {
                 minOfStreet = 1
             }
-            if (maxOfStreet > 9 || maxOfStreet == 0) {
-                minOfStreet -= (maxOfStreet % 9)
-                maxOfStreet = 9
-            } else if (isNaN(maxOfStreet)) {
+            if (maxOfStreet > 9 || maxOfStreet == 0 || isNaN(maxOfStreet)) {
                 maxOfStreet = 9
             }
             
