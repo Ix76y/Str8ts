@@ -1,4 +1,4 @@
-# Str8ts
+# Str8ts - WIP
 
 Algorithm design to create and solve Str8ts puzzles.
 

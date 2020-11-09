@@ -1,4 +1,5 @@
 const Field = require('./field.js')
+const Street = require('./street.js')
 
 class Board {
     constructor(size) {
@@ -9,6 +10,7 @@ class Board {
             for (var j = 0; j < size; j++) 
                 this.fields[i][j] = new Field()
         }
+        this.streets = new Array()
     }
 
     description = "This is the game board containing a 2D array of fields."
@@ -47,6 +49,14 @@ class Board {
         var y = [2, 6, 5, 6, 0, 3, 4, 8, 2, 8, 2, 6, 0, 6, 0, 4, 5, 8, 2, 3, 2, 6]
         var x = [0, 0, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 6, 6, 7, 7, 8, 8]
         var nums = [[0, 8, 4], [1, 0, 8], [1, 1, 9], [1, 4, 7], [2, 0, 4], [2, 1, 5], [2, 6, 2], [2, 8, 7], [3, 2, 8], [3, 3, 3], [4, 0, 7], [5, 2, 2], [5, 4, 4], [5, 6, 6], [5, 8, 8], [6, 4, 1], [7, 0, 1], [7, 3, 9], [7, 4, 8], [7, 5, 6], [8, 6, 3]]
+        // nums.push([0, 1, 8])
+        // nums.push([3, 1, 7])
+        // nums.push([4, 1, 6])
+        // nums.push([5, 1, 3])
+        // nums.push([6, 1, 4])
+        // nums.push([7, 1, 2])
+        // nums.push([8, 1, 1])
+
         for (var i = 0; i < x.length; i++) {
             this.fields[x[i]][y[i]].isWhite = false
             console.log("Setting to black " + x[i] + "/" + y[i])
@@ -57,6 +67,39 @@ class Board {
             this.fields[nums[i][0]][nums[i][1]].isSet = true
         }
     }
+
+    findStreets() {
+        // creating streets
+        for(var i = 0; i < this.size; i++) {
+            var streetH = new Street()
+            streetH.isHorizontal = true
+            var streetV = new Street()
+            streetV.isHorizontal = false
+            for (var j = 0; j < this.size; j++) {
+                streetH = updateStreet(this, i, j, streetH)
+                streetV = updateStreet(this, j, i, streetV)
+            }
+            if (streetH.fields.length > 1) {
+                board.streets.push(streetH)
+            }
+            if (streetV.fields.length > 1) {
+                board.streets.push(streetV)
+            }
+        }
+    }
+}
+
+function updateStreet(board, i, j, street) {
+    if (board.fields[i][j].isWhite) {
+        street.fields.push(board.fields[i][j])
+        street.positions.push([i, j])
+    } else {
+        if (street.fields.length > 1) {
+            board.streets.push(street)
+            return new Street()
+        }
+    }
+    return street
 }
 
 // row and col have max 5 black fields 

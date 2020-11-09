@@ -47,12 +47,13 @@ body {
 }
 
 .num-input {
-    margin: 4px;
-    /*padding-top: 4px;*/
+    margin-top: 2px;
+    margin-left: 2px;
     display: block;
     border: none;
     /*border-bottom: 1px solid #ccc;*/
-    width: 20px;
+    width: 24px;
+    height: 26px;
     text-align: center;
     color: var(--sl-color-primary-50);
     font-size: larger;

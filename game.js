@@ -1,6 +1,7 @@
 const { ipcRenderer } = require('electron')
 const Field = require('./model/field.js')
 const Board = require('./model/board.js')
+const Solver = require('./solver/solver.js')
 
 var board = new Board(9)
 var gameBoard = document.getElementById("game-board")
@@ -17,11 +18,30 @@ function generateNew() {
     displayPuzzle()
 }
 
+function solvePuzzle() {
+    console.log("Trying to solve Puzzle...")
+    Solver.solveGame(board)
+    console.log("Updating UI of Puzzle with solved fields...")
+    updatePuzzle()
+}
+
 function generateSimpleExample() {
     console.log("Generate New Puzzle!")
     gameBoard.innerHTML = ''
     board.generateSimpleExample()
     displayPuzzle()
+}
+
+function updatePuzzle() {
+    for (var i = 0; i < board.size; i++) {
+        for (var j = 0; j < board.size; j++) {
+            let field = board.fields[i][j]
+            if (!field.isSet && field.isWhite && field.number != 0) {
+                var input = document.getElementById("" + i + j)
+                input.value = field.number
+            }
+        }
+    }
 }
 
 function displayPuzzle() {
@@ -33,6 +53,7 @@ function displayPuzzle() {
                   field.className = "grid-item"
                   var input = document.createElement("input")
                   input.className = "num-input"
+                  input.id = "" + i + j
                   input.setAttribute("maxlength", "1")
                   field.appendChild(input)
               } else if (tmpField.isWhite) {
